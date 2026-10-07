@@ -1,0 +1,12 @@
+diff --git a/internal/pkg/table/table_manager.go b/internal/pkg/table/table_manager.go
+--- a/internal/pkg/table/table_manager.go
++++ b/internal/pkg/table/table_manager.go
+@@ -104,7 +104,7 @@ func ProcessMessage(m *bgp.BGPMessage, peerInfo *PeerInfo, timestamp time.Time, treat
+ 			// of path attrs faster
+ 			reachAttrs := []bgp.PathAttributeInterface{}
+ 			if !treatAsWithdraw {
+-				nlriAttr, _ := bgp.NewPathAttributeMpReachNLRI(family, []bgp.PathNLRI{nlri}, nexthop)
++				nlriAttr, _ := bgp.NewPathAttributeMpReachNLRI(family, []bgp.PathNLRI{nlri}, nexthop, reach.LinkLocalNexthop)
+ 				reachAttrs = makeAttributeList(attrs, nlriAttr)
+ 			}
+ 
